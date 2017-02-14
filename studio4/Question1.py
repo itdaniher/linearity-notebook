@@ -45,8 +45,9 @@ iii)
 
 so, looking for compatible combinations of vectors V1..6, I visually identified V1..4, V3..6, and a matrix comprised of {V1, V4, V5, V6}
 
-skipped the step of solving for the homogenous solution here, and then using the homogenous solution and the specified points
-provide the directly extracted the particular solutions Cp for all As
+I skipped the step of solving for the homogenous solution here, using my formulated matrix and an algorithmic solver to...
+    provide the directly extracted the particular solutions Cp for all relevant As
+
 besides the provided [1/4, -3/4, 1, -1/2], we also found [1, -1, 2, -1] and [1/3, -1/3, 1/3, 1/3]
 
 iv) TBD
