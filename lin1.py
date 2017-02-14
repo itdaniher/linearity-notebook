@@ -34,13 +34,16 @@ lambda syntax is a huge saver when working with simple mathematical functions, l
 # training wheels for everyone!
 
 # could be written 'from np.linalg import det as determinant' but binding as a function is a little more flexible and in my mind easier to parse
-determinant = lambda array: np.linalg.det(array)
+determinant = lambda A: np.linalg.det(A)
 
 # returns a tuple containing a list of the scalar eigenvalues and then a list of the eigenvectors
-eigen_vs = lambda array: np.linalg.eig(array)
+eigen_vs = lambda A: np.linalg.eig(A)
 
 # inverts an invertable array
-inverse = lambda array: np.linalg.inv(array)
+inverse = lambda A: np.linalg.inv(A)
+
+# solves a system of equations of the form Ax=b for unknowns x given a square non-singular matrix A and a vector of coefficients b
+solve = lambda A, b: np.linalg.solve(A, b)
 
 # rotation matrix we've used so often, defined for your future reference as 'R' - no way we suffer a namespace collision.
 R = lambda theta: np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
