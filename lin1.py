@@ -45,5 +45,7 @@ inverse = lambda A: np.linalg.inv(A)
 # solves a system of equations of the form Ax=b for unknowns x given a square non-singular matrix A and a vector of coefficients b
 solve = lambda A, b: np.linalg.solve(A, b)
 
+mul = lambda a, b: np.dot(a,b)
+
 # rotation matrix we've used so often, defined for your future reference as 'R' - no way we suffer a namespace collision.
 R = lambda theta: np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
