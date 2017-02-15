@@ -1,0 +1,13 @@
+D shrinks along both axes, along one much faster than the other (9x?)
+
+R(pi/4) applies this manipulation at a 45 degree angle to the axes, so that Yn will trend towards zero via a different set of axes
+
+ii) fact, the difference between the axes diminishes as they approach zero
+
+iii) fact, verified earlier
+
+iv) fact, definitional?
+
+v) they're similar as they have the same eigenvalues, and thus the same general behavior, even if they differ in application of axes
+
+vi) the transformations are the same, albiet applied across different axes - as theta approaches zero, the two parallel transformations between A and D become identical

@@ -1,0 +1,5 @@
+l is an eigenvalue of a n by n matrix A
+
+i) A-lI, columns are linearly dependent - fiction
+ii) fact - these would be the eigenvectors?
+iii) fact - definitional
