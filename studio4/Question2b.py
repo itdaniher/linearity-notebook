@@ -29,7 +29,7 @@ pyplot.show()
 
 ANSWERS_2b == """
 
-let's call λ l for awhile...
+let's call lambda l for awhile...
 
 i) (l**2-(0.5+0.5)*l+(0.25-0.16)) = 0
 

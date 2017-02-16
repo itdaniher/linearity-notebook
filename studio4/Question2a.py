@@ -8,29 +8,29 @@ there're two axes at play, so two linearly independent eigenvectors, each with t
 
 as we have zeros where our values don't lie along the identity matrix, (basis = I?), it's pretty easy to read the values directly off the matrix
 
-A*v=λ*v
-A*v-λ*v=0
-A*v-λ*I*v=0
-(A-λ*I)*v=0
+A*v=l*v
+A*v-l*v=0
+A*v-l*I*v=0
+(A-l*I)*v=0
 
-only sensible when λ != 0
+only sensible when l != 0
 
-scalar multiplication of λ across the identity matrix
+scalar multiplication of l across the identity matrix
 
-elementwise subtraction of λ*I from the original matrix
+elementwise subtraction of l*I from the original matrix
 
 for a matrix 'a b; c d', it's pretty easy to see how
 
-'a-λ b; c d-λ'
+'a-l b; c d-l'
 
 becomes:
 
-λ**2-(a+d)λ+(ad-bc)=0
+l**2-(a+d)l+(ad-bc)=0
 
 
 for our specific case:
 
-'0.9-λ 0; 0 0.1-λ' = '0 0; 0 0' 
+'0.9-l 0; 0 0.1-l' = '0 0; 0 0' 
 
 (just noticed why we multiply by I here)
 
@@ -38,7 +38,7 @@ and the only values for our eigenvalues here are the values along our diagonal!
 
 we can check our math with the expansion provided
 
-(λ**2-(0.9+1.0)*λ+(0.9*0.1-0*0) = 0
+(l**2-(0.9+1.0)*l+(0.9*0.1-0*0) = 0
 
 x**2 - x + 0.09 = 0
 
