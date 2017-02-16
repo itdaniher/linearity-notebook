@@ -25,8 +25,6 @@ for e in np.linspace(0, 1, 6):
 for e in np.linspace(0, 1, 6):
     xs = get_first_N(100, x0, D(e))
     pyplot.plot([x[0] for x in xs], [x[1] for x in xs], '-o', label='D: e='+str(e))
-
+pyplot.title("Question 2d")
 pyplot.legend()
-pyplot.show()
-
-
+pyplot.savefig("Question2d.png", bbox_inches='tight', figsize=(9,10), dpi=144)

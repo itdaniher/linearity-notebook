@@ -1,4 +1,4 @@
 i) det(R(theta)) == 1 - correct! the rotation matrix is scale-invariant, doesn't change "the area of the parallelogram" that the determinant can be thought of as representing for 2-space
 ii) correct! see above! - the rotation matrix doesn't scale, so the scale factor is only determined by D
 iii) correct! I think this is just a generalisation of what we've already gotten from above
-iv)  correct - product of the diagonal minus the product of... well, bce, I'm not sure what the trick is here besides algebra
+iv)  correct - product of the diagonal minus the product of... well, another, smaller, diagonal. the 3x3 matrixes-side-by-side trick works nicely here

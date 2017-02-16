@@ -1,25 +1,61 @@
+### current bpython session - make changes and save to reevaluate session.
+### lines beginning with ### will be ignored.
+### To return to bpython without reevaluating make no changes to this file
+### or save an empty file.
+import sympy as s
+import string
+
+# l is lambda, or our eigenvalues
+l = s.var('l')
+def get_unique(N_vars, sets = string.lowercase):
+    symbol_names = []
+    while len(symbol_names) < N_vars:
+        for letter in sets:
+            if letter not in globals().keys() and letter not in symbol_names:
+                symbol_names += [letter]
+                break
+        if letter == sets[-1]:
+            break
+    return s.var(' '.join(symbol_names))
+
 A = s.Matrix(2,2,get_unique(4))
 B = s.Matrix(2,2,get_unique(4))
+A
+### Matrix([
+### [a, b],
+### [c, d]])
+B
+### Matrix([
+### [e, f],
+### [g, h]])
 (A*B).det()
-### i*l*m*p - i*l*n*o - j*k*m*p + j*k*n*o
+### a*d*e*h - a*d*f*g - b*c*e*h + b*c*f*g
 A.det()
-### i*l - j*k
+### a*d - b*c
 B.det()
-### m*p - n*o
+### e*h - f*g
 (A*B).det() == s.expand(A.det()*B.det())
 ### True
 diagonal_test = s.diag(*get_unique(3))
-n2 = s.Matrix(2,2,get_unique(4))
-n2.eigenvals().values()
-### [1, 1]
+n2 = s.Matrix(2,2,(a, b, c, d))
+n2
+### Matrix([
+### [a, b],
+### [c, d]])
+s.solveset(n2.charpoly(l).as_expr(), l) 
+### {a/2 + d/2 - sqrt(a**2 - 2*a*d + 4*b*c + d**2)/2, a/2 + d/2 + sqrt(a**2 - 2*a*d + 4*b*c + d**2)/2}
 n2.eigenvals().keys()
-### [u/2 + x/2 - sqrt(u**2 - 2*u*x + 4*v*w + x**2)/2, u/2 + x/2 + sqrt(u**2 - 2*u*x + 4*v*w + x**2)/2]
-n2.eigenvals().keys()[0]*n2.eigenvals().keys()[1]
-### (u/2 + x/2 - sqrt(u**2 - 2*u*x + 4*v*w + x**2)/2)*(u/2 + x/2 + sqrt(u**2 - 2*u*x + 4*v*w + x**2)/2)
-s.simplify(_)
-### u*x - v*w
-n2.eigenvals().keys()
-### [u/2 + x/2 - sqrt(u**2 - 2*u*x + 4*v*w + x**2)/2, u/2 + x/2 + sqrt(u**2 - 2*u*x + 4*v*w + x**2)/2]
+### [a/2 + d/2 - sqrt(a**2 - 2*a*d + 4*b*c + d**2)/2, a/2 + d/2 + sqrt(a**2 - 2*a*d + 4*b*c + d**2)/2]
+s.solveset(l**2-(a+d)*l+(a*d-b*c), l)
+### {a/2 + d/2 - sqrt(a**2 - 2*a*d + 4*b*c + d**2)/2, a/2 + d/2 + sqrt(a**2 - 2*a*d + 4*b*c + d**2)/2}
+
+ANSWER_4a = """
+
+above, we can see that the eigenvalues are equivalent to the roots of the characteristic polynomial, which are equal to the roots of the provided formulation for lambda
+
+"""
+
+
 n3 = s.diag(a,d,e)
 n3[3] = c
 n3[1] = b
@@ -28,19 +64,16 @@ n3
 ### [a, b, 0],
 ### [c, d, 0],
 ### [0, 0, e]])
-n3.charpoly()
-### PurePoly(_lambda**3 + (-a - d - e)*_lambda**2 + (a*d + a*e - b*c + d*e)*_lambda - a*d*e + b*c*e, _lambda, domain='ZZ[a,b,c,d,e]')
-n2.charpoly()
-### PurePoly(_lambda**2 + (-u - x)*_lambda + u*x - v*w, _lambda, domain='ZZ[x,u,v,w]')
-n2
-### Matrix([
-### [u, v],
-### [w, x]])
+n3.charpoly(l).as_expr()
+### -a*d*e + b*c*e + l**3 + l**2*(-a - d - e) + l*(a*d + a*e - b*c + d*e)
+n2.charpoly(l).as_expr()
+### a*d - b*c + l**2 + l*(-a - d)
 c4 = s.Matrix(3, 3, (a, b, c, 0, 1, 0, 0, 0, 1))
-### Matrix([
-### [a, b, c],
-### [0, 1, 0],
-### [0, 0, 1]])
-c4.charpoly()
-### PurePoly(_lambda**3 + (-a - 2)*_lambda**2 + (2*a + 1)*_lambda - a, _lambda, domain='ZZ[a]')
-### 
+c4.charpoly(l).as_expr(l)
+### -a + l**3 + l**2*(-a - 2) + l*(2*a + 1)
+
+ANSWER_4bc = """
+
+see above
+
+"""

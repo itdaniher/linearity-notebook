@@ -1,0 +1,11 @@
+If this question didn't ask us for "general" 2x2 matricies, I'd have been able to keep using my previous tact - numpy is pretty nifty, but doesn't provide generalisable tools for exploring symbolic math. As such, I went down a novel, spectacular rabbit hole, and brushed up on the SymPy library, a pure-Python computer algebra system that I've leveraged in the past for controls homework and various laplace domain circuit simulations.
+
+So, for the purpose of illustrating these principals, we'll use a combination of simple reason and algebra for the 2x2 and sympy for 3x3s, etc.
+
+The identity matrix specifies a square from the axes to (1,1) - the determinant of the identity matrix is 1, and the identity matrix applies a trivial / tautological transformation, resulting in the original matrix. If the identity matrix is shifted to another quadrant, say bounding from the axes to (-1,-1), it still defines a 1x1 square, still has a determinant of one, and so on, so forth. Any variant on the theme, such as a matrix with the rows '1 0' and '0 -1' still has an area of one, but has a determinant of -1. We can use this trivial 2d example to think through det(AB) == det(A)det(B), which I work through in code for additional info. 
+
+A thought experiment with a modified 2x2 identity matrix of the rows '1 0' and '0 0' the trivial non-invertable transformation, as it serves to isolate what's canonically considered to be the 'x' component, turning 'y' to 0. No coming back from that. The determinant of the matrix (tautologically) the product of the diagonal, is zero.
+
+Does area get expanded to four or five space? Is it still called area?
+
+The identity matrix is a pretty useful mental model for generalising this for N-space, it's always going to have a determinant of 1, and you can play with arbitrarily large identity matrixes without any messy algebra. 

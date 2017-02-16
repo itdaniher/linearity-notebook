@@ -1,8 +1,7 @@
 from lin1 import *
 D = Arr('0.9 0 ; 0 0.1')
 
-"""
-
+ANSWERS_2a = """
 operates by shrinking by 9/10ths and 1/10th at right angles to eachother, as the non-zero values lie along the diagonal
 
 there're two axes at play, so two linearly independent eigenvectors, each with their unique eigenvalues.
@@ -56,16 +55,4 @@ eigen_vs(D)
 
 
 # Our answers were correct!
-
-"""
-
-let's call λ l for awhile...
-
-(l**2-(0.5+0.5)*l+(0.25-0.16)) = 0
-
-spiffy! looks familiar! same eigenvalues!
-
-and looking at these eigenvalues, no matter what our starting point, we'll to trend to zero...
-
-so our final solution is (0,0)
 

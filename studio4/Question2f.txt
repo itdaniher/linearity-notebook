@@ -1,5 +1,5 @@
 l is an eigenvalue of a n by n matrix A
 
-i) A-lI, columns are linearly dependent - fiction
+i) fact - columns are linearly dependent
 ii) fact - these would be the eigenvectors?
-iii) fact - definitional
+iii) fact - definitional, but to expand if you have a matrix in reduced echelon form, and you broadcast your eigenvalues across the identity matrix and subtract, you'll an un-invertable matrix with a linearly dependent row of all zeros
