@@ -26,15 +26,14 @@ solve(V[1:5].T, [1]*4)
 ###     solve(V[1:5].T, [1]*4)
 ###   File "lin1.py", line 46, in <lambda>
 ###     solve = lambda A, b: np.linalg.solve(A, b)
-###   File "/usr/lib/python2.7/dist-packages/numpy/linalg/linalg.py", line 384, in solve
-###     r = gufunc(a, b, signature=signature, extobj=extobj)
-###   File "/usr/lib/python2.7/dist-packages/numpy/linalg/linalg.py", line 90, in _raise_linalgerror_singular
-###     raise LinAlgError("Singular matrix")
 ### LinAlgError: Singular matrix
 solve(V[2:6].T, [1]*4)
 ### array([ 1., -1.,  2., -1.])
 solve(Arr('2 1 4 0; 0 0 2 0; 0 0 0 1; 1 2 1 2').T, [1]*4)
 ### array([ 0.33333333, -0.33333333,  0.33333333,  0.33333333])
+
+solve(Arr('2 1 4 0; 2 3 4 0; 0 0 2 0; 0 0 0 1').T, [0]*4)
+### array([ 0.,  0.,  0.,  0.])
 
 """
 ANSWERS 
@@ -43,12 +42,12 @@ i) no valid bases specified as none constrain in the appropriate number of dimen
 ii) Only the first combination, as discussed below, is a valid span
 iii)
 
-so, looking for compatible combinations of vectors V1..6, I visually identified V1..4, V3..6, and a matrix comprised of {V1, V4, V5, V6}
+so, looking for compatible combinations of vectors V1..6, I visually identified V1..4, V3..6, and a m
 
-I skipped the step of solving for the homogenous solution here, using my formulated matrix and an algorithmic solver to...
+I skipped the step of solving for the homogenous solution here, using my formulated matrix and an alg
     provide the directly extracted the particular solutions Cp for all relevant As
 
 besides the provided [1/4, -3/4, 1, -1/2], we also found [1, -1, 2, -1] and [1/3, -1/3, 1/3, 1/3]
 
-iv) TBD
+iv) we're looking for the set of points where the system of equations specified by V1, V2, V3, and V4 intersect - the combination of values for a vector 'a b c d' that's dotted with our matrix A to satisfy the conditions A*v=0 - the only set of values the solver found for v were [0, 0, 0, 0]
 """
