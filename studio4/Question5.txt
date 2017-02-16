@@ -1,0 +1,11 @@
+a) linear combination is pretty easy to make out as:
+
+X(n) = (1/2)**n*5*U[0]+(1/2)**(n-4)*U[4]
+
+where U[n] is the step function at a specified index
+
+b) This one is odd. I'd like to here how Professor Hoffman would solve this... 
+
+X(n) = (1/2)**n+a**n*n doesn't look right
+
+X(n) = (1/2+log(a))**n... isolate the exponent... idk.
