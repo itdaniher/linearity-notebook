@@ -1,0 +1,11 @@
+No need for fancy tools here...
+
+1) 
+
+a - this is an overdetermined system, with more rows than columns, but the vector [0,0,0,0] is a homogenous solution
+
+b - this is an underdetermined system, with more variables than equations
+
+c - overdetermined system, but with no solutions, as 0*x+0*y+0*z=4 is unsatisfyable
+
+d - underdetermined system, with no solutions - more equations than variables

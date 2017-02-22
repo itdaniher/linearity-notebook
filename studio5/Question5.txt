@@ -1,0 +1,30 @@
+As past-me helpfully reduced this process....
+
+np.dot(np.dot(eigenvecs_as_columns, eigenvals_on_eigenbasis), np.linalg.inv(eigenvecs_as_columns))
+
+this is pretty intuitive now, although it wasn't then -
+
+we use our eigenvectors to create a linear combination of our variable on orthogonal axes, apply our transformation matrix an arbitrary number of times to advance the process, and apply the inverse of our change-of-basis eigenvectors-as-columns matrix to reset
+
+
+P is merely our eigenvectors laminated as columns:
+
+>>> Arr('1 1 0; 1 0 1; 2 -1 -1')
+array([[ 1,  1,  0],
+       [ 1,  0,  1],
+       [ 2, -1, -1]])
+
+D is our eigenvalues dotted with our identity matrix, or something such that it's a diagonal matrix comprised of our eigenvalues
+
+>>> Arr('1 0 0; 0 1/2 0; 0 0 -1/3')
+array([[ 1.        ,  0.        ,  0.        ],
+       [ 0.        ,  0.5       ,  0.        ],
+       [ 0.        ,  0.        , -0.33333333]])
+
+to find P**-1:
+
+>>> inverse(Arr('1 1 0; 1 0 1; 2 -1 -1'))
+array([[ 0.25,  0.25,  0.25],
+       [ 0.75, -0.25, -0.25],
+       [-0.25,  0.75, -0.25]])
+

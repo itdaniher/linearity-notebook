@@ -1,0 +1,25 @@
+Negligible fancyness here, too...
+
+2
+
+a) eigen_vs(Arr('1 2; 2 1')) -> (-3,1)
+
+b) eigen_vs(Arr('1 0 1; 0 1 2; 0 1 -1')) -> (1, sqrt(3), sqrt(-3))
+
+c) eigenvalues are merely your diagonal - if you frame it as (D-l*I)*v = 0...
+
+ -- it's pretty clear to see that your eigenvalues (l, because typing lambda is hard)
+        are just organised on your diagonal, the values that are zeroed
+        when subtracted with your eigenvalues on a diagonal
+
+d) eigen_vs(Arr('1 2 0 0 0; 2 1 0 0 0; 0 0 1 0 1; 0 0 0 1 2; 0 0 1 2 -1'))  
+
+  -> (3, -1, 1, sqrt(-6), sqrt(6))
+
+e) aha, this is one of those symmetry tricks used by computers to Make Go Fast
+
+ - the eigenvalues of a block diagonal matrix look like the sum of the set of the two eigenvalues, plus or minus a scale factor or so
+
+- if we frame eigenvalues as the values subtracted from a fully diagonalised matrix to render it uninvertable, the general construct referred to above, then any values that render one portion of a diagonalised matrix uninvertable will render the whole matrix uninvertable
+
+this is a 'thought' experiment illustration...
