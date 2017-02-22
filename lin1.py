@@ -1,6 +1,6 @@
 import numpy as np
 
-Arr = lambda txt: np.array([[float(x.strip()) for x in y.split() if x.strip() != ''] for y in txt.split(';') if y.split() != ''])
+Arr = lambda txt: np.array([[eval(x.strip()) for x in y.split() if x.strip() != ''] for y in txt.split(';') if y.split() != ''])
 
 """
 For those of who you have never seen a list comprehension, let alone a nested list comprehension. 
