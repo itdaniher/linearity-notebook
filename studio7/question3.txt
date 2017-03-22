@@ -1,0 +1,9 @@
+two parts... first, educated guesses:
+
+a) -6
+b) +3, -3
+c) -1, +1, possibly \pm i?
+
+these guesses are derived by basic algebra and some extrapolation / half-remembered algorithm for dealing with double and triple derivs
+
+the second half of this would be actually working through the algebra in sympy and validating my guesses... maybe later!

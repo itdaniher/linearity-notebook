@@ -1,0 +1,34 @@
+4a)
+
+This one is harder to conceptualise - we're tasked with relating two sets of equations:
+
+a homogenous system:
+
+dxdt = 4x
+x = exp(4t)
+
+an inhomogenous system:
+
+dxdt = 4x + 1
+x = -1/4
+
+The stated relation we're exploring is that 
+
+x = a*x_h + x_p
+for the equation:
+
+dxdt = 4x + 1
+
+such that:
+
+x = a * exp(4t) - 1/4
+
+we're comparing this formulation with the provided value of dxdt, so let's integrate the provided value:
+
+dxdt = 4x + 1
+dx = (4x+1)*dt
+x = (4x+1)*t
+
+....
+
+picking this up later.

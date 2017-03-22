@@ -1,0 +1,11 @@
+the rate of radioactive decay is directly proportional to the amount of the radioactive material, such that
+
+dR/dt = k*N
+	where R is the rate of decay, k is a constant probability, and N is mols remaining
+
+d(theta)/dt = -g/l*sin(theta)
+	where g is the gravitational constant, l is the length of the pendulum, and theta is the angle from the center
+
+dV/dt = V/(RC)
+	where V is the voltage across the capacitor and R and C are the constants in ohms and farads, respectively
+
