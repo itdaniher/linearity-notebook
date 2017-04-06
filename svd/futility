@@ -1,0 +1,45 @@
+U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x is not 0 else x))
+### Matrix([
+### [ 1.0, 1.0, 1.0],
+### [-1.0, 1.0, nan],
+### [-1.0, nan, 1.0]])
+U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x))
+### Matrix([
+### [ 1.0, 1.0, 1.0],
+### [-1.0, 1.0,   0],
+### [-1.0,   0, 1.0]])
+_.is_symmetric
+### <bound method MatrixBase.is_symmetric of Matrix([
+### [ 1.0, 1.0, 1.0],
+### [-1.0, 1.0,   0],
+### [-1.0,   0, 1.0]])>
+U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x))
+### Matrix([
+### [ 1.0, 1.0, 1.0],
+### [-1.0, 1.0,   0],
+### [-1.0,   0, 1.0]])
+U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x)).is_symmetric()
+### False
+U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x))
+### Matrix([
+### [ 1.0, 1.0, 1.0],
+### [-1.0, 1.0,   0],
+### [-1.0,   0, 1.0]])
+sign_matrix = U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x))]
+###   File "<input>", line 1
+###     sign_matrix = U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x))]
+###                                                                                                      ^
+### SyntaxError: invalid syntax
+sign_matrix = U.multiply_elementwise(U.applyfunc(abs).applyfunc(lambda x: 1./x if x != 0 else x))
+sign_matrix.T
+### Matrix([
+### [1.0, -1.0, -1.0],
+### [1.0,  1.0,    0],
+### [1.0,    0,  1.0]])
+U.multiply_elementwise(sign_matrix.T) * S * V
+### Matrix([
+### [ 1.0],
+### [-2.0],
+### [-3.0]])
+### 
+
