@@ -1,17 +1,16 @@
-# coding=utf-8
-from __future__ import division
 import sympy
-from sympy.abc import s
+
 import matplotlib
 matplotlib.use('cairo')
+
 from matplotlib import pyplot
 import mpmath
-import numpy
+import numpy as np
 import scipy.signal as signal
-import pprint
+
 j = sympy.I
 e = sympy.exp(1)
-#import control
+s = sympy.var('s')
 
 ct = 100
 
@@ -23,37 +22,34 @@ blacks = lambda G_s, H_s: G_s/(1+G_s*H_s)
 def eeval(expression, w):
     """ evaluate a sympy expression at omega. return magnitude, phase."""
     num, den = e2nd(expression)
-    y = numpy.polyval(num, 1j*w) / numpy.polyval(den, 1j*w)
-    phase = numpy.arctan2(y.imag, y.real) * 180.0 / numpy.pi
+    y = np.polyval(num, 1j*w) / np.polyval(den, 1j*w)
+    phase = np.arctan2(y.imag, y.real) * 180.0 / np.pi
     mag = abs(y)
     return mag, phase
 
 def bode(expression, n = 10):
-    decibels = lambda lin: 20*numpy.log10(numpy.abs(lin))
+    """ evaluate an expression at N points, returning frequency, magnitude, and phase """
+    decibels = lambda lin: 20*np.log10(np.abs(lin))
     num, den = e2nd(expression)
     freqs = signal.findfreqs(num, den, n)
-    magnitude = numpy.array([])
-    phase = numpy.array([])
+    magnitude = np.array([])
+    phase = np.array([])
     for freq in freqs:
         (m, p) = eeval(expression, freq)
-        magnitude = numpy.append(magnitude, m)
+        magnitude = np.append(magnitude, m)
         if p >= 0:
             p = -360+p
-        phase = numpy.append(phase, p)
-    magnitude = numpy.array([decibels(x) for x in magnitude])
+        phase = np.append(phase, p)
+    magnitude = np.array([decibels(x) for x in magnitude])
     return freqs, magnitude, phase
 
 def e2nd(expression):
     """ basic helper function that accepts a sympy expression, expands it, 
-    attempts to simplify it, and returns a numerator and denomenator pair for the instantiation of a scipy
-    LTI system object. """
-    expression = expression.expand()
-    expression = expression.cancel()
+    attempts to simplify it, and returns a numerator and denomenator pair for the instantiation of a scipy LTI system object. """
+    expression = expression.expand().cancel()
     n = sympy.Poly(sympy.numer(expression), s).all_coeffs()
     d = sympy.Poly(sympy.denom(expression), s).all_coeffs()
-    n = [float(x) for x in n]
-    d = [float(x) for x in d]
-    return (n, d)
+    return ([float(x) for x in n], [float(x) for x in d])
 
 def pade(t, n):
     """ pade approximation of a time delay, as per mathworks' controls toolkit.
@@ -78,7 +74,7 @@ def sys2e(system):
     return sympy.factor(num/den)
 
 def findZero(arr):
-    return numpy.argmin(numpy.abs(arr))
+    return np.argmin(np.abs(arr))
 
 def phaseMargin(expression):
     w, mag, phase = bode(expression, n=ct)
@@ -129,7 +125,7 @@ def leadCompensate(expression, target):
     phaseTarget = -(180 + (55 - target))
     targetIndex = findZero(phase-phaseTarget)
     w_c = w[targetIndex]
-    tau = 1 / (numpy.sqrt(alpha) * w_c)
+    tau = 1 / (np.sqrt(alpha) * w_c)
     G_c = (alpha*tau*s+1)/(tau*s+1)
     # get magnitude of loop transfer function L(s) at w_c
     K_l = 1/ eeval(G_c*expression, w_c)[0] 
@@ -155,15 +151,10 @@ def drawBode(expression, f1=pyplot.figure(), color="k", labeled=""):
     phasePlot.set_ylabel("degrees")
     pyplot.setp(magPlot.get_xticklabels(), visible=False)
     pyplot.legend(loc="best")
-    f1.savefig("./"+''.join([str(x) for x in expression.free_symbols])+".png", dpi = 300)
+    unambiguous_printable_name = sympy.srepr(expression).replace(', prec=15', '')
+    f1.savefig("./"+unambiguous_printable_name+".png", dpi = 300)
     return f1
 
-#def rLocus(expression, f1=pyplot.figure(), color="k", labeled=""):
-#    r, k = control.matlab.rlocus(sys=control.TransferFunction(*e2nd(expression)), klist = numpy.linspace(0, 10, 10000))
-#    pyplot.plot(k, r, color)
-#    return f1
-
-H_s = -10/((s+1)*(0.1*s+1)*(0.01*s+1))
-drawBode(H_s)
-#rLocus(H_s)
-pyplot.show()
+if __name__ == "__main__":
+    H_s = -10/((s+1)*(0.1*s+1)*(0.01*s+1))
+    drawBode(H_s)
