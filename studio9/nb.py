@@ -1,4 +1,4 @@
-from compensators import *
+from laplace import *
 
 x = sympy.Function('X')
 t = sympy.var('t')
@@ -15,4 +15,5 @@ sympy.laplace_transform(e**(j*t), t, s)
 
 drawBode(1/(s**3+3*s**2+2*s+12))
 
-filter = sys2e(signal.lti(*signal.butter(1, (2,20), 'bandpass', True, 'ba')))
+filt = sys2e(signal.lti(*signal.butter(1, (2,20), 'bandpass', True, 'ba')))
+drawBode(filt)
